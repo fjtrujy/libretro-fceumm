@@ -925,12 +925,6 @@ static void retro_set_custom_palette(void)
       FCEUD_SetPalette( i + 128, r, g, b);
       FCEUD_SetPalette( i + 192, r, g, b);
    }
-
-#if defined(RENDER_GSKIT_PS2)
-   if (ps2) {
-      ps2->updatedPalette = true;
-   }
-#endif
 }
 
 /* Set variables for NTSC(1) / PAL(2) / Dendy(3)
@@ -1649,7 +1643,6 @@ static void retro_run_blit(uint8_t *gfx)
                                                    overscan_h ? 8.0f : 0.0f};
    }
 
-   ps2->updatedPalette = true;
    ps2->coreTexture->Clut = (u32*)retro_palette;
    ps2->coreTexture->Mem = (u32*)gfx;
 
